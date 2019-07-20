@@ -1,0 +1,175 @@
+\documentclass{article} \usepackage{mathtools} \usepackage{algorithm}
+% http://ctan.org/pkg/algorithm 
+\usepackage{algpseudocode} 
+%http://ctan.org/pkg/algorithmicx 
+
+
+\begin{document} 
+{\Large SOEN 6011 Problem 3 Anqi Wang Team K } \\
+
+
+{\large 1. Explanation }\\
+Beta function has the general form: \\
+
+ \State $ B (x,y) =  \Gamma(x) \Gamma(y)  / \Gamma( x+y) $ \\
+ \State $ B (x,y) =  $$\int_{0}^{\infty} t^{x-1} \times (1-t)^{y-1} dt$$  $ \\ \\
+ 
+\State Beta function is the incomplete Gamma functions $ \gamma (a,z) $ and $\Gamma(a,z)$., it contains Gamma functions' elements. \\ \\
+ Gamma function has the formula as below: \\
+$\gamma(x,z) = $$\int_{0}^{z} t^{x-1} \times (e)^{-t} dt$$  $ \\
+
+\State By using Gamma function's steps, we can have: \\
+$ $$\int_{0}^{\infty} t^{x-1} \times (e)^{-t} dt$$ $ \\
+$u = t^{x-1}, $ \ $du/dt = (x-1)t^{x-2} $ \\
+$dv/dt = e^{-t}, \ v = e^{-t} + constant$ \\
+$$ uv - \int_{a}^{b} v \times du/dt \  dt$$ \\
+$ $$=t^{x-1}e^{-t}-\int_{a}^{b} e^{-t} \times (x-1)t^{x-2} \  dt $$ $ \\
+So, \\
+$=e^{-t} \times t^x/x, in \ the \ range (0, + \infty) $
+
+
+
+
+\State Thus, each part of Beta function can be calculated separately. Combining Gamma function's results by change the input values x, y, and x+y, we can obtain Beta function B(X, Y) solution. \\  \\ \\
+
+{\large 2. First methods  }\\
+
+\State Formula: $(1+1/n)^n \times( t^x / x) $ \\
+Technical Reason: This algorithm runs relatively fast for generating solutions. It doesn’t need to save each step after calculation. It also saves memory. \\ \\
+ Advantages: It can estimate the real values for x and y, the input domain works for all real values, greater than 0. This solves the problems for only integer inputs. In this case, the "probability of success" evaluation results will be more closed to beta distribution. This is good for finding the probability of lager measurements. The input variable size can be various. \\ \\
+ Disadvantages: It may not provide accurate answer when the value has out of epsilon range. It can only provide the approximate solution. \\ \\
+Description and pseudocode: This algorithm can approach to the relatively accurate answer. It eliminates errors during calculation. It also maximizes the accuracy for Beta Function result.
+
+
+
+\begin{algorithm} 
+\caption{Method 1}
+\label{euclid} 
+\begin{algorithmic}[1] 
+
+\Procedure{$mainFunction$}{} \\
+$user \ input \ values \  x \ and \  y$ \ 
+%\Comment{The g.c.d. of a and b} %
+%\State $r\gets a\bmod b$ %
+\While{$ (x < =0 \ or \ y < 0 )$} \\
+%\Comment{We have the answer if r is 0} %
+\ \ \ \ \ \ \ \ user re-enter value x and y \\
+\Comment{User has to re-enter values because the previous input values are invalid} 
+\EndWhile
+
+\State $singleGammaX\gets singleGamma(x)$ 
+
+\State $singleGammaY\gets singleGamma(y)$ 
+
+\State $singleGammaSum\gets singleGamma(x + y)$ 
+
+\State $answer \gets( singleGammaX \times singleGammaY ) / singleGammaSum$  \\
+
+\ \ \ \ \ \ \ \ Print out answer value.
+
+\EndProcedure  \\ 
+\Procedure{$singleGamma$}{$x$} \\
+\Comment{This formula has been implemented \\
+$answer = (1+1/n)^n \times( t^x / x) $}\\
+
+\State $temp \gets x $
+
+\While{$ (x >0 )$}
+\State $temp\gets temp \times (x-1)$ 
+\State $ x--$ 
+\EndWhile
+
+
+\State $n! \gets temp$
+
+
+\While{$ (t!= 0 )$}
+\State answer = answer + temp
+\EndWhile
+
+\State return answer
+%\label{euclidendwhile} %
+
+\EndProcedure 
+\end{algorithmic}
+
+
+\end{algorithm} 
+
+
+\newpage
+{\large 3. Second method  }\\
+ 
+
+
+\State Formula:  $ \sum_{n=0}^{n \to +\infty}( 1/n!) \times( t^x / x) $ \\ \\
+Technical Reason: This algorithm introduces the sum of the individual item. Solution will be generated after each item has been calculated. \\ \\
+ Advantages: This algorithm is easy for software engineers to implement. It can provide reference results, which give suggestions for users to make rational opinions.  \\ \\
+ Disadvantages: This algorithm uses incremental to do the sum. It takes time to generate final result. \\ \\
+Description and pseudocode:
+Beta function B(x,y)is the incomplete gamma functions. So, this calculation separates each part into gamma calculation, and manipulate into the Beta Function result. Theoretically speaking, the calculate range is from 0 to positive infinity. The factorial step uses while loop to sum up each step. \\ \\ \\ 
+
+
+
+\begin{algorithm} 
+\caption{Method 2}
+\label{euclid} 
+\begin{algorithmic}[2] 
+
+\Procedure{$mainFunction$}{} \\
+$user \ input \ values \  x \ and \  y$ \ 
+%\Comment{The g.c.d. of a and b} %
+%\State $r\gets a\bmod b$ %
+\While{$ (x < =0 \ or \ y < 0 )$} \\
+%\Comment{We have the answer if r is 0} %
+\ \ \ \ \ \ \ \ user re-enter value x and y \\
+\Comment{User has to re-enter values because the previous input values are invalid} 
+\EndWhile
+
+\State $singleGammaX\gets singleGamma(x)$ 
+
+\State $singleGammaY\gets singleGamma(y)$ 
+
+\State $singleGammaSum\gets singleGamma(x + y)$ 
+
+\State $answer \gets( singleGammaX \times singleGammaY ) / singleGammaSum$  \\
+
+\ \ \ \ \ \ \ \ Print out answer value.
+
+\EndProcedure  \\ 
+\Procedure{$singleGamma$}{$x$} \\
+$answer = \sum_{n=0}^{n \to +\infty}( 1/n!) \times( t^x / x) $\\
+
+\State $temp \gets x $
+
+\While{$ (x >0 )$}
+\State $temp\gets temp \times (x-1)$ 
+\State $ x--$ 
+\EndWhile
+
+
+\State $n! \gets temp$
+
+
+\While{$ (t!= 0 )$}
+\State answer = answer + temp
+\EndWhile
+
+\State return answer
+%\label{euclidendwhile} %
+
+\EndProcedure 
+\end{algorithmic}
+
+
+\end{algorithm} 
+\\
+\\
+\\
+
+{\large Reference}
+
+Stewart, J. (2008). Transcendental Functions [Abstract]. Calculus, 6, 71-73. Retrieved July 7, 2019.
+\\ \\ \\ 
+(The pesudocode for method 2 is in the next page)
+\end{document}
