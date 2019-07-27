@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{SOEN 6011 Problem 4}
+\author{Anqi Wang }
+\date{July 26 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Correctness}
+ 
+This source code calculates Beta function B(X, Y), for \ $ x, y \subset (0, +  \infty). $ The theory behind this program is based on mathematics integral calculation. The answer is obtained through solving mathematics integral by using java code implementation. This calculation does not import any packages, nor any build-in java functions. It combines empirical equation into Beta function:   \\
+ $ B (x,y) =  \Gamma(x) \Gamma(y)  / \Gamma( x+y) $ \\
+ $ B (x,y) =  $$\int_{0}^{\infty} t^{x-1} \times (1-t)^{y-1} dt$$   \\ 
+$ This can generate accurate answers. For this program, the maximum length allowance number is followed double data type 1.79E308. It has the accuracy for almost 15 digits after decimal point. For calculating input value greater than 171.624, the answer approaches to infinity. 
+
+\section{Efficiency}
+
+This program works with double datatype. This is a primitive datatype and it does not require much system memories. Generally speaking, for all values satisfying within the valid input range, and working on an average speed computer in 21 centuries, the program can generate results in milliseconds. The accuracy also decides the code efficiency. This program can estimate the solution in the accuracy of 15 digits after decimal point. 
+\section{Maintainability and Program Style}
+
+This source code has followed the standard Google Java Style Guide, which is corresponding to the whole team’s program style. The team has confirmed that source code file structure is correspondence. Naming convention has applied. This provides a strong foundation for future maintenance. It is also easier for other developers to follow the current progress. Besides, documentation is necessary for engineers to trace back the developing history, which is an important resource to set up current maintainable decisions. This Beta Calculator program generates Javadoc, such as public class declaration and methods explanation have been added. What's more, copyright information has been included as well. On the other hand, corresponding team’s program style has kept with the same format, block indentation and statement has been regulated. The code follows line wrapping and line break strictly. There is no extra whitespace. Exactly each section has one blank line to separate. For annotations, override, and static members have been used carefully with quality. Thus, by following the standard programming style, readability and maintainability have increases. Software engineers are easy to understand and catch up with other people’s work. 
+
+
+\section{Robustness and JUnit Testing}
+
+In order to increase the robustness, this program introduces Java JUnit testing. This program contains two files, the calculation .java file ($ F8 \_  Beta \_ Function.java $) and Junit assert .java file ($ AssertTests.java $). In order to build a robust software, this calculation code matches with user assumptions. It demonstrates requirements and has covered in detailed Junit Assert test cases. Software testing is believed to be useful to increase software robustness. The program has passed all test cases.
+
+
+\section{Feasibility, Error handling, Usability}
+
+
+This program has a clear user interface. It is straight forward for user to understand the logic and instructions. This program also kindly reminds user if he has input a valid value. If error occurs, error handling exceptions shall be invoked. Try and catch blocks keep the program functioning, and exceptions have thrown error messages to remind user. This program also paid attentions in feasibility for user in the design phase, and has built to pursuit user-friendly aspect.
+
+
+\section{Debugger}
+
+
+
+There are three debuggers have been tried for this project during implementation. But, Jetbrains InteliJ Idea IDE build-in debugger is the major tool. It has several advantages. It is an efficient tool to find mistakes in the code. It can place breakpoints at any statements. It supports the quick glance by hovering mouse onto code lines, or clicking onto the breakpoint to see its properties in the tooltip. This helps developers to suspend the execution of code. A detailed step by step processes will be displayed during debugging. Using this tool during implementation is essential for programmers to solve problems. This procedure is good for figuring out tiny mistakes as well. Also, breakpoint’s properties are easy to be changed even after it has been placed. There is a hot key for programmers to relocate breakpoints in their codes and continue onto solving other issues. What’s more, this debugger has a clear interface and straight forward working logic. Users can set their own debugging configurations based on their specific situation. The stepping toolbar contains options in Step Over, Step Into, Force Step Into, Step Out, Drop Frame and Run to Cursor. This support programmers to manipulate the code. They can also use Evaluate Expression and Trace Current Stream Chain. In the debugging environment, each step shows the current value, the memory address and the times this line of code has been invoked. You can also see Java Virtual Machine status during debugging. Although debugger is a good tool and assists you while coding, it reduces your abilities to think. Debuggers may point out the problem immediately, but your brain will get used to follow the instructions, and you will rely onto it as time goes. Your problem-solving abilities will decrease.
+
+
+\section{Checkstyle}
+
+
+ 
+Last but not least, source code quality is important. This source code Beta Function calculator is a java program. This program uses Checkstyle development tool during software implementation. There is a Checkstyle plugin to add into IDE. This tool is able to check coding standard automatically. This makes software developer’s work easier by indicating design problems, like code formats and layout. Furthermore, java is an object-oriented programming language. Multiple classes and methods are this program's feature. Checkstyle tool can also help with auditing code structure in classes and methods. For example, while implementing this program, Checkstyle plugin reminds the programmer that the format is not regulated. This diminishes the chances for problems to occur. However, the disadvantages for Checkstyle is that this tool can not determine the full hierarchy of the program. If the java program has multiple inheritance, this tool may not be applicable.
+
+\section{Reference}
+
+
+ \ \ \ \ \ \ G. (n.d.). Google Java Style Guide. Retrieved July 26, 2019, from \\ $ https://google.github.io/styleguide/javaguide.html $ \\
+
+Jetbrains. (n.d.). Debugging Your First Java Application. Retrieved July 26, 2019, from \\ $ https://www.jetbrains.com/help/idea/debugging-your-first-java-application.html  $ \\
+
+Ivanov, R. (2019, June 22). Checkstyle Overview. Retrieved July 26, 2019, from \\ $ https://checkstyle.sourceforge.io/  $
+
+
+
+\end{document}
