@@ -1,71 +1,441 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx} % Required for the inclusion of images
-\title{SOEN6011 Deliverable 3: Problem 5 and Problem 7}
-\author{Anqi Wang 40057695  }
-\date{Github Repo address: https://github.com/AnqiAngelineWang/SOEN6011}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Jacobs Landscape Poster
+% LaTeX Template
+% Version 1.0 (29/03/13)
+%
+% Created by:
+% Computational Physics and Biophysics Group, Jacobs University
+% https://teamwork.jacobs-university.de:8443/confluence/display/CoPandBiG/LaTeX+Poster
+% 
+% Further modified by:
+% Nathaniel Johnston (nathaniel@njohnston.ca)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% 
+% Masaryk University presentation themes were downloaded from:
+% https://www.overleaf.com/gallery/tagged/muni
+%
+% and ported into Jacobs Landscape Poster by:
+% Jumaidil Awal (ideal1st.here@googlemail.com)
+% 
+% Jacobs Landscape Poster License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Masaryk University's fibeamer theme license:
+% Copyright 2015  Vít Novotný <witiko@mail.muni.cz>
+% Faculty of Informatics, Masaryk University (Brno, Czech Republic)
+% under Latex Project Public License
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[final]{beamer}
+
+\usepackage[scale=1.24]{beamerposter} % Use the beamerposter package for laying out the poster
+
+%\usetheme{confposter} % Use the confposter theme supplied with this template
+\usetheme[faculty=chemo]{fibeamer} % Uncomment to use Masaryk University's fibeamer theme instead.
+
+%\setbeamercolor{block title}{fg=ngreen,bg=white} % Colors of the block titles
+%\setbeamercolor{block body}{fg=black,bg=white} % Colors of the body of blocks
+%\setbeamercolor{block alerted title}{fg=white,bg=dblue!70} % Colors of the highlighted block titles
+%\setbeamercolor{block alerted body}{fg=black,bg=dblue!10} % Colors of the body of highlighted blocks
+% Many more colors are available for use in beamerthemeconfposter.sty
+
+%-----------------------------------------------------------
+% Define the column widths and overall poster size
+% To set effective sepwid, onecolwid and twocolwid values, first choose how many columns you want and how much separation you want between columns
+% In this template, the separation width chosen is 0.024 of the paper width and a 4-column layout
+% onecolwid should therefore be (1-(# of columns+1)*sepwid)/# of columns e.g. (1-(4+1)*0.024)/4 = 0.22
+% Set twocolwid to be (2*onecolwid)+sepwid = 0.464
+% Set threecolwid to be (3*onecolwid)+2*sepwid = 0.708
+
+\newlength{\sepwid}
+\newlength{\onecolwid}
+\newlength{\twocolwid}
+\newlength{\threecolwid}
+\setlength{\paperwidth}{46.8in} % A0 width: 46.8in
+\setlength{\paperheight}{33.1in} % A0 height: 33.1in
+\setlength{\sepwid}{0.024\paperwidth} % Separation width (white space) between columns
+\setlength{\onecolwid}{0.21\paperwidth} % Width of one column
+\setlength{\twocolwid}{0.451\paperwidth} % Width of two columns
+\setlength{\threecolwid}{0.678\paperwidth} % Width of three columns
+%\setlength{\topmargin}{-0.5in} % Reduce the top margin size
+%-----------------------------------------------------------
+
+\usepackage{graphicx}  % Required for including images
+
+\usepackage{booktabs} % Top and bottom rules for tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION 
+%----------------------------------------------------------------------------------------
+
+\title{SOEN 6011 Project Function 8 Beta(x, y)} % Poster title
+
+\author{Anqi Wang 40057695 Github Repo: https://github.com/AnqiAngelineWang/SOEN6011} % Author(s)
+
+\institute{Software Engineering, Concordia University, Montreal, Canada} % Institution(s)
+
+%----------------------------------------------------------------------------------------
 
 \begin{document}
+\addtobeamertemplate{block end}{}{\vspace*{2ex}} % White space under blocks
+\addtobeamertemplate{block example end}{}{\vspace*{2ex}} % White space under example blocks
+\addtobeamertemplate{block alerted end}{}{\vspace*{2ex}} % White space under highlighted (alert) blocks
 
-\maketitle
+\setlength{\belowcaptionskip}{2ex} % White space under figures
+\setlength\belowdisplayshortskip{2ex} % White space under equations
+%\begin{darkframes} % Uncomment for dark theme, don't forget to \end{darkframes}
+\begin{frame} % The whole poster is enclosed in one beamer frame
 
-\section{Introduction }
-This documentation is working on the source code review of Function 9, and the test case review for Function 10.
-\section{Question 5: Source code review of Function 9}
-The source code review is a necessary step for a program to be successful. It is essential to find problems and reduce future risks. Code review may also help with comparing requirement functionally, and improve quality to become robust. This source code view contains manual check and automatic tools check. I have used two sets of automatic tools: Checkstyle Tool and Codacy Tool as guidelines to conduct the source code review. The check list has shown below. \\
+%==========================Begin Head===============================
+
+  \begin{columns}
+   \begin{column}{\linewidth}
+    \vskip1cm
+    \centering
+    \usebeamercolor{title in headline}{\color{fg}\Huge{\textbf{\inserttitle}}\\[0.5ex]}
+    \usebeamercolor{author in headline}{\color{fg}\Large{\insertauthor}\\[1ex]}
+    \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}
+    \vskip1cm
+   \end{column}
+   \vspace{1cm}
+  \end{columns}
+ \vspace{1cm}
+
+%==========================End Head===============================
+
+\begin{columns}[t] % The whole poster consists of three major columns, the second of which is split into two columns twice - the [t] option aligns each column's content to the top
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\onecolwid} % The first column
+
+%----------------------------------------------------------------------------------------
+%	OBJECTIVES
+%----------------------------------------------------------------------------------------
+
+\begin{exampleblock}{Introduction and Description}
+{\small
+Beta function B(x,y)is the incomplete gamma functions $ \gamma (a,z) $ and $\Gamma(a,z)$. It is one of the important meaningful mathematic functions. Generally speaking, Beta function is related with Euler Integral and is the first kind. It can be considered as the incomplete beta functions. Beta function has the general form: \\
+\begin{itemize}
+\item \State $ B (x,y) =  \Gamma(x) \Gamma(y)  / \Gamma( x+y) $ \\
+\item  \State $ B (x,y) =  $$\int_{0}^{\infty} t^{x-1} \times (1-t)^{y-1} dt$$  $ \\ \\
+
+\end{itemize}
+\item Domain: x,y $ \subset (0, + \infty)$  for all real value, greater than 0. \\
+Co-domain: the solution generated by B(x,y) , satisfy with  x,y $ \subset (0, + \infty)$ 
+  \item It has the shape:
+  
+  \begin{figure}
+\includegraphics[width=120mm,scale=1]{fibeamer/theme/mu/1.jpg}
+\end{figure}
+            Figure 1. Graph of the Beta Function   
+                
+  }
+\end{exampleblock}
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\begin{exampleblock}{Functional and Non-functional Requirement}
+ 
+ {\small 
+ \item   These functional and non-functional requirements followed ISO/IEC/IEEE 29148 Standard. Their individual rationale with detailed explanation are in the report. 
+    
+              \item Functional Requirement
+}      
+  \begin{figure}
+\includegraphics[width=120mm,scale=1]{fibeamer/theme/mu/8-8.jpg}
+\end{figure}     
 
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[[width=80mm,scale=0.6]{1} 
-\end{center}
+            Figure 2. Functional Requirement List   
+             \item Non-functional Requirement
+              
+   \begin{figure}
+\includegraphics[width=120mm,scale=1]{fibeamer/theme/mu/3.jpg}
+\end{figure}
+ Figure 3. Non-Functional Requirement List 
+
+\end{exampleblock}
+
+%------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of the first column
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\twocolwid} % Begin a column which is two columns wide (column 2)
+
+\begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column
+
+\begin{column}{\onecolwid}\vspace{-.74in} % The first column within column 2 (column 2.1)
+
+%----------------------------------------------------------------------------------------
+%	MATERIALS
+%----------------------------------------------------------------------------------------
+
+
+
+
+\begin{exampleblock}{ Algorithm Selection}
+
+             
+              \item Algorithm Optional 1
+               \begin{itemize}
+             {\small      \item Explanation: This algorithm works based on approximation values in the array to estimate beta results. It calculates Beta solutions based on input value ranges.
+                \item Advantages: Easy to understand the logistic behind. The code structure is clear and easy to implement. \\
+\item Disadvantages: This algorithm can only obtain accurate results for integer inputs, not for decimal inputs. The result has large uncertainties. 
+
+}
+         \end{itemize}    
+Algorithm Optional 2
+                \begin{itemize}
+           {\small     \item Explanation:This algorithm generates beta results based on mathematic models. It has accuracy for almost 15 digits after decimal point. 
+                \item Advantages: It has high accuracy and low errors in results. It can handle both integers and decimals inputs.  \\
+\item Disadvantages:  It needs lightly longer processing time.
+\item This algorithm has been selected for the implementation.
+
+}
+
+
+              
+                   \end{itemize}
+              
+               %%%%%%%%%%%5 
+              
+                
+                
+
+                
+\end{exampleblock}
+%----------------------------------------------------------------------------------------
+
+\begin{exampleblock}{ {Implementation}}
+\begin{itemize}
+           {\small        
+           \item  This source code has followed the standard Google Java Style Guide, which
+is corresponding to the whole team's program style.  
+                \item Correctness and Efficiency: The maximum length
+allowance number is followed double data type 1.79E308. Double datatype is a primitive datatype and it
+does not require much system memories. 
+               \item Maintainability and Program Style: Coding convention has been regulated. 
+
+\item Debugger: Jetbrains InteliJ Idea IDE build-in debugger is the major tool.
+\item Checkstyle: This program uses Checkstyle development tool during software implementation.
+
+\item Error handling and User Interface: This program has a clear user interface. It is straight forward for user to understand the logic and instructions. It also reminds user if
+he has input a valid value. If error occurs, error handling exceptions shall be
+invoked. Try and catch blocks keep the program functioning, and exceptions
+have thrown error messages to remind user. The figure below shows the result.
+ 
+}
+  \end{itemize}
+  
+ 
+
+\end{exampleblock}
+
+\end{column} % End of column 2.1
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\onecolwid}\vspace{-.74in} % The second column within column 2 (column 2.2)
+
+%----------------------------------------------------------------------------------------
+%	METHODS
+%----------------------------------------------------------------------------------------
+
+\begin{exampleblock}{Implementation Continue}
+
+
+  \begin{figure}
+\includegraphics[width=120mm,scale=1]{fibeamer/theme/mu/4.jpg}
+\end{figure}
+          
+            Figure 4. User Interface with Exception Handling, Error Messages    
+             
+
+
+
+  
+ \begin{itemize}
+           {\small              
+\item The above run cases shows that functional requirements has been processed, especially for boundary check.
+
+}
+ \end{itemize}
+\end{exampleblock}
+
+
+\begin{exampleblock}{Unit Testing}
+  \begin{itemize}
+              
+        {\small      \item  This program introduces Junit assert .java file (AssertTests.java). The test cases have satisfied client's requirement, and matches with user assumptions. The program has passed all test cases. 
+Test cases ID and user (assumptions) requirements ID have matched, and explain below:
+}
+ 
+  \begin{figure}
+\includegraphics[width=120mm,scale=1]{fibeamer/theme/mu/5.jpg}
 \end{figure}
 
- \ \ \ \ \ \ \ \ \ \ \ \ \ \  \ \ \ \ \ \ \ Table 1. Source code review guidelines \\
-
-
-
-
-
-Comments: \\ \\
-1. For manual check, this code is clean, the logic is clear and in good manner. Also, it follows the team’s coding standard and programming style. I have requested Problem 2 for requirements. After comparing it with the source code, it can be deduced that the source code has included functionalities, and most of requirements have achieved.  \\ \\
-2. For automatic tools check, Checkstyle Tool and Codacy Tool indicates some formats that are not regulated:  \\ 
- \ \ \ \ \ \ \ 1).	Some imported user interfaces are never used.  \\
- \ \ \ \ \ \ \ 2).	Some imported user interfaces have wrong lexicographical order.  \\
- \ \ \ \ \ \ \ 3).	Some indentation formats are not correct. It contains tab characters.   \\
-
-Overall, the source code is readable, maintainable, secure with error handling and messages.   \\
-
-
-
-\newpage
-
-\section{Question 7: Test case review for Function 10. }
-1. Set up computing environment \\ \\
-Test cases are important to check program’s accuracy. I have imported the Function 10’s project into my Java Coding Eclipse IDE. The test cases applied under Junit 5. In order to proceed with launch for the program test cases successfully, I have configured Junit Testing into my Eclipse IDE, and set up corresponding Java version to meet the computing environment. \\ \\
-2. Requirements and Test cases \\ \\
-Reference to requirements functionalities in Problem 2, each of the test case is clearly associated with the requirement. There are 6 test cases. All test cases are passed. There is no error or failure. The accuracy is 100 $ \% $. The test cases have covered and match with all functions related to the source code. The source code coverage is 100 $ \% $.  \\
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=120mm,scale=1]{2} 
-\end{center}
+            Figure 5. Each test case contains requirement 
+    
+  \begin{figure}
+\includegraphics[width=120mm,scale=1]{fibeamer/theme/mu/9.jpg}
 \end{figure}
 
- \ \ \ \ \ \ \ \ \ \ \ \ \ \  \ \ \ \ \ \ \ Table 2. Testing summary \\
+            Figure 6. Test cases and requirements 
+            
 
-3. Conclusion \\ \\
-Although test case ID may not be clear, the test cases are reasonable, and have covered with achieving all requirements. The result is successful.  \\
+  \begin{figure}
+\includegraphics[width=120mm,scale=1]{fibeamer/theme/mu/6.jpg}
+\end{figure}
 
-\section{Reference}
+          
+                 
+            Figure 7. All test cases have passed
+              
+              
+         {\small       
+         \item     Software testing is believed to be useful to check program accuracy, satisfy requirements, and increase software robustness.
+}
+              \end{itemize}
+\end{exampleblock}
 
 
- \ \ \ \ \ \ G. (n.d.). Google Java Style Guide. Retrieved July 26, 2019, from \\ $ https://google.github.io/styleguide/javaguide.html $ \\
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of column 2.2
+
+\end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
+
+%----------------------------------------------------------------------------------------
+%	IMPORTANT RESULT
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+
+\begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column again
+
+\begin{column}{\onecolwid} % The first column within column 2 (column 2.1)
+
+%----------------------------------------------------------------------------------------
+%	MATHEMATICAL SECTION
+%----------------------------------------------------------------------------------------
 
 
-Ivanov, R. (2019, June 22). Checkstyle Overview. Retrieved July 26, 2019, from  $ https://checkstyle.sourceforge.io/  $  \\ \
 
-\ J. (n.d.). Codacy-code review and code quality monitoring. Retrieved August 2, 2019, from $ https://www.codacy.com, \  https://app.codacy.com $ 
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of column 2.1
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\onecolwid} % The second column within column 2 (column 2.2)
+
+%----------------------------------------------------------------------------------------
+%	RESULTS
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of column 2.2
+
+\end{columns} % End of the split of column 2
+
+\end{column} % End of the second column
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\onecolwid} % The third column
+
+%----------------------------------------------------------------------------------------
+%	CONCLUSION
+%----------------------------------------------------------------------------------------
 
 
+%----------------------------------------------------------------------------------------
+%	ADDITIONAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+\begin{exampleblock}{Conclusion and Reflects}
+
+                  \begin{itemize}
+            
+            \item Test cases almost covered majority of source code. 
+       
+  \begin{figure}
+\includegraphics[width=120mm,scale=1]{fibeamer/theme/mu/7.jpg}
+\end{figure}
+       
+            Figure 8. Team member code review result
+           {\small   \item  Critical decisions: When I decide which algorithm to choose, it is the critical decision. There are algorithms are accurate, but not satisfying the project requirement, like it needs to use math packages to simulate integral calculation. Or, the algorithm is not precise for this project. }
+              
+             {\small   \item Lesson learnt myself:  I need to make clear for functional and non-functional requirement. And test cases need to match with requirement. Also, test cases had better cover most of the codes, which will be more persuaded to demonstrate the program's testability. }
+              
+           {\small     \item Lesson learnt from team member: I need to pay attention in coding format. The format I followed must be correct and accurate, especially, no extra spaces in the source code. Also, I need to pay attention to naming convention. This is important for readability. While coding, line length had better not exceed 100 characters. Last but not least, writing exception handling error message should be enhanced. This will provide user easier time to understand the problem happened in the code. }
+   
+                  \end{itemize}
+        
+\end{exampleblock}
+
+%----------------------------------------------------------------------------------------
+%	REFERENCES
+%----------------------------------------------------------------------------------------
+
+\begin{exampleblock}{References}
+  \begin{itemize}
+           {\small
+              
+             
+              \item      Stewart, J. (2008). Transcendental Functions [Abstract]. Calculus, 6, 71-73. Retrieved August 12, 2019.
+              
+                     \item ISO/IEC/IEEE 29148:2018. Systems and Software Engineering -- Life Cycle Processes -- Requirements Engineering. 2019. ISO, IEC, & IEEE. (P.9-P.16)
+\\
+
+
+      }
+              \end{itemize}
+              
+\end{exampleblock}
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+%\setbeamercolor{block title}{fg=red,bg=white} % Change the block title color
+
+%\begin{exampleblock}{Acknowledgements}
+
+%\small{\rmfamily{Nam mollis tristique neque eu luctus. Suspendisse rutrum congue nisi sed convallis. Aenean id neque dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.}} \\
+
+%\end{exampleblock}
+
+%----------------------------------------------------------------------------------------
+%	CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+%\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
+%\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
+
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of the third column
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\end{columns} % End of all the columns in the poster
+
+\end{frame} % End of the enclosing frame
+%\end{darkframes} % Uncomment for dark theme
 \end{document}
